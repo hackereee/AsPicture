@@ -93,8 +93,8 @@ public final class MyPictureView_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        checkBox = ((CheckBox) hasViews.findViewById(id.checkBox));
         imageView = ((ImageView) hasViews.findViewById(id.imageView));
+        checkBox = ((CheckBox) hasViews.findViewById(id.checkBox));
         if (checkBox!= null) {
             checkBox.setOnClickListener(new OnClickListener() {
 

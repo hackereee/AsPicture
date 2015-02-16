@@ -1,5 +1,8 @@
 package com.select.picture.activity;
 
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.EActivity;
+
 import com.select.picture.adapter.PictureCursorAdapter;
 
 import android.annotation.SuppressLint;
@@ -12,7 +15,9 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 
 
-@SuppressLint("NewApi") public class BitmapSelectActivity extends Activity implements LoaderCallbacks<Cursor>{
+@SuppressLint("NewApi") 
+@EActivity
+public class BitmapSelectActivity extends Activity implements LoaderCallbacks<Cursor>{
 
 	public static String[] STORE_IMAGES = {
 		MediaStore.Images.Media.DISPLAY_NAME,
@@ -31,11 +36,17 @@ import android.support.v4.content.Loader;
 	
 	PictureCursorAdapter pictureCursorAdapter;
 	
+	@AfterViews
+	void afterView(){
+		pictureCursorAdapter = new PictureCursorAdapter(this);
+	}
+	
 	@Override
 	public Loader<Cursor> onCreateLoader(int arg0, Bundle arg1) {
 		CursorLoader loader = new CursorLoader(this,
 				MediaStore.Images.Thumbnails.EXTERNAL_CONTENT_URI,
 				THUMBNAIL_IMAGES, null, null, null);
+		pictureCursorAdapter.
 		return loader;
 	}
 
